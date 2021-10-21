@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="En">
+    <head>
+        <title>Tip Calculator</title>
+    </head>
+    <body>
+        <div class = "All">
+            <h1>Tip Calculator</h1>
+            
+            <div id="Together" class = "Info">
+                <h2>Bill</h2>
+                <input id="input-bill" type ="number" min = 0  placeholder="$">
+                <h2>Tip %</h2>
+                <!-- <button>-</button> -->
+                <input id ="input-tip" type ="number" min = 0 step = 5  placeholder="Tip $">
+                <!-- <button>+</button> -->
+
+                <h2>Number of people</h2>
+                <!-- <button>-</button> -->
+                <input id="input-people" type ="number" min = 0  placeholder="Num of people">
+                <!-- <button>+</button> -->
+            </div>
+                
+            <!-- </header> use div or section can use article or -->
+
+            <div class = "Info">
+							<div id="Tipbox" class="Display" >
+                <h2>Tip: </h2>
+                <output id="display-tip"></output>
+							</div>
+							<div class="Display">
+                <h2>Total: </h2>
+                <output id="display-total"></output>
+							</div>
+              <div class="Display">
+                <h2>$ Person: </h2>
+                <output id="display-person"></output>
+              </div>
+            </div>
+        </div>
+
+        <!-- ID is for one element while class can be applied to several -->
+
+
+        <script>
+            const billInput = document.querySelector('#input-bill')
+            const tipInput = document.querySelector('#input-tip')
+            const peopleInput = document.querySelector('#input-people')
+            const displayTip = document.querySelector('#display-tip')
+            const displayTotal = document.querySelector('#display-total')
+            const displayPeople = document.querySelector('#display-person')
+        // --------------------------------------------------------------
+        billInput.addEventListener('input', handleBill)
+        tipInput.addEventListener('input', handleBill)
+        peopleInput.addEventListener('input', handleBill)
+
+        function handleBill(e) {
+            console.log("handleBill")
+            const percent = parseInt(tipInput.value)
+            const billAmount = parseFloat(billInput.value)
+            const tipAmount = parseInt(tipInput.value)
+            const peopleAmount = parseInt(peopleInput.value)
+            const tip = billAmount * percent / 100
+            const total = billAmount + tip
+            const perPerson = total / peopleAmount
+            displayTip.innerHTML = tip.toFixed(2)
+            displayTotal.innerHTML = total.toFixed(2)
+            displayPeople.innerHTML =perPerson.toFixed(2)
+            console.log(billAmount, tip, total, percent, perPerson)
+        }
+
+    //-----------------------------------------------
+        </script>
+
+        <style>
+						.All {
+							display:grid;
+							grid-template-columns: 1fr 1fr;
+							grid-template-areas: "a a"
+																	 "b c";
+							font-family: Georgia, 'Times New Roman', Times, serif;
+							border-style: solid;
+							border-color: peru;
+							background-color: wheat;
+							padding: 2em;
+							width: 500px;
+							margin: auto;
+						}
+
+
+
+
+
+            h1 {
+							grid-area: a;
+              color: rosybrown;
+							line-height: 2em;
+							text-align: center;
+							font-size: 40px;
+							margin: 0;
+            }
+/* header, paragraph tags default the margin so put margin: 0 bc of the default */
+						.Info {
+							color:rgb(168, 101, 101);
+						}
+/* flex-direction and justify-content can be only used for flex */
+						#Together {
+							grid-area: b;
+							display: flex;
+							flex-direction: column;
+						}
+
+						#End {
+							grid-area: c;
+							display: flex;
+							flex-direction: column;
+							justify-content: center;
+							align-items: center;
+						}
+
+						input{
+							border-color: thistle;
+							border-radius: 0.5em;
+							border-width: 0.3em;
+							width: 150px;
+							text-align: center;
+							background-color:ghostwhite;
+						}
+
+						output{
+							color: rgb(192, 133, 174);
+							font-size: 20px;
+							margin-left: 20px;
+						}
+
+						.Display {
+							display: flex;
+							align-items: center;
+							line-height: 3em;
+						}
+
+
+        </style>
+
+    </body> <!-- Closing body tag! -->
+
+</html>
+<!-- color:palevioletred -->
